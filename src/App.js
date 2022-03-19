@@ -10,7 +10,10 @@ import GlobalStyles from './theme/globalStyles';
 import TeachersList from './components/pages/Teachers/View/TeachersList';
 import AddTeacher from './components/pages/Teachers/Add/AddTeacher';
 import StudentsList from './components/pages/Students/view/StudentsList';
-import AddStudent from './components/pages/Students/Add/AddStudents'
+import AddStudent from './components/pages/Students/Add/AddStudents';
+import BookList from './components/pages/Books/View/BookList';
+import AddBook from './components/pages/Books/Add/AddBooks';
+import Booking from './components/pages/Books/View/Booking';
 function App() {
     return (
       <ThemeConfig>
@@ -19,10 +22,13 @@ function App() {
           <Route path="/" element={<DashboardLayout/>}>
             <Route path="/" element={<Navigate to="/home"/>}/>
             <Route path="home" element={<Home/>}/>
-            <Route path="teacher" element={<TeachersList/>}/>
+            {/* <Route path="teacher" element={<TeachersList/>}/>
             <Route path="teacher/add" element={<AddTeacher/>}/>
             <Route path="student" element={<StudentsList/>}/>
-            <Route path="student/add" element={<AddStudent/>}/>
+            <Route path="student/add" element={<AddStudent/>}/> */}
+            <Route path="book" element={<BookList/>}/>
+            <Route path="book/add" element={<AddBook/>}/>
+            <Route path="book/view" element={<Booking/>}/>
           </Route>
         </Routes>
         </ThemeConfig>

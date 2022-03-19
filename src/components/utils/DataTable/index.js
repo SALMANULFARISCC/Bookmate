@@ -125,11 +125,12 @@ export default function DataTable({ TABLE_HEAD, TABLE_DATA }) {
   };
   return (
     <Card>
-      <DataTableToolbar
+      {/* <DataTableToolbar
         numSelected={selected.length}
         filterName={filterName}
         onFilterName={handleFilterByName}
-      />
+      /> */}
+
 
       <Scrollbar>
         <TableContainer sx={{ minWidth: 800, padding: 2 }}>

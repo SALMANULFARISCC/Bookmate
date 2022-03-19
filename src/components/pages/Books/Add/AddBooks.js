@@ -29,7 +29,7 @@ const ProfileCard = styled(Card)(({ theme }) => ({
 
 // table header cell config
 
-export default function AddStudent() {
+export default function AddBook() {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const handleUsernameChange = (event) => setUsername(event.target.value);
@@ -44,7 +44,7 @@ export default function AddStudent() {
     console.log(data);
   };
   return (
-    <Page title="AddStudent">
+    <Page title="AddBook">
       <Container>
         <Stack
           direction="row"

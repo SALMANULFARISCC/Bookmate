@@ -62,10 +62,10 @@ const TABLE_DATA =[
 
 
 
-export default function StudentsList() {
+export default function BookList() {
 
   return (
-    <Page title="StudentsList">
+    <Page title="BookList">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
@@ -74,7 +74,7 @@ export default function StudentsList() {
           <Button
             variant="contained"
             component={RouterLink}
-            to="/student/add"
+            to="/book/add"
             startIcon={<AddIcon/>}
           >
             Add Book
