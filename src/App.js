@@ -14,6 +14,7 @@ import AddStudent from './components/pages/Students/Add/AddStudents';
 import BookList from './components/pages/Books/View/BookList';
 import AddBook from './components/pages/Books/Add/AddBooks';
 import Booking from './components/pages/Books/View/Booking';
+import ProductView from './components/pages/Books/View/ProductView';
 function App() {
     return (
       <ThemeConfig>
@@ -28,7 +29,8 @@ function App() {
             <Route path="student/add" element={<AddStudent/>}/> */}
             <Route path="book" element={<BookList/>}/>
             <Route path="book/add" element={<AddBook/>}/>
-            <Route path="book/view" element={<Booking/>}/>
+            <Route path="book/booking" element={<Booking/>}/>
+            <Route path="book/booking/view" element={<ProductView/>}/>
           </Route>
         </Routes>
         </ThemeConfig>

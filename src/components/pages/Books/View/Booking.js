@@ -5,6 +5,7 @@ import Page from "../../../utils/Page";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { IconButton } from "@mui/material";
+import { shadows } from '@mui/system';
 
 export default function Booking() {
   return (
@@ -37,7 +38,7 @@ export default function Booking() {
           >
             12 booking
           </Typography>
-        <Card  sx={{ pt: 3, pb: 3}}>
+
         
           <Grid></Grid>
 
@@ -52,9 +53,8 @@ export default function Booking() {
           </Grid>
 
           {/* <BookingCard></BookingCard> */}
-        </Card>
         <Typography variant="h5" fontFamily={"Roboto"} sx={{ pl: 2 ,pt:5}}>
-               Booking List
+               Booking Details
             </Typography>
         <BookingList />
         

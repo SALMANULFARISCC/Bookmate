@@ -22,9 +22,10 @@ const NavConfig = [
   },
   {
   title: "booking",
-  path: "/book/view",
+  path: "/book/booking",
   icon: BookmarksIcon,
   }
+  
 ];
 
 export default NavConfig;
