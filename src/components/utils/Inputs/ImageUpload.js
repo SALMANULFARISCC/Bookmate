@@ -22,7 +22,7 @@ export default function ImageUpload(props) {
   const { image, setImage } = props;
 
   const handleImageChange = (e) =>
-    e.target.files[0] && setImage(URL.createObjectURL(e.traget.files[0]));
+setImage(e.target.files[0]);
   return (
     <>
       <input type="file" id="imageUpload" hidden onChange={handleImageChange} />

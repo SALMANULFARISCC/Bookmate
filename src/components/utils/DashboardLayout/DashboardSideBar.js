@@ -1,5 +1,17 @@
+
+import {
+  collection,
+  setDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+
+} from "firebase/firestore";
+
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useEffect,useState,useContext } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 // material ui predefined components
 import { styled } from "@mui/material/styles";
@@ -12,6 +24,9 @@ import { MHidden } from "../../@material-extent";
 import NavConfig from "./NavConfig";
 import Logo from "../../../images/AvengersLogo.png";
 import ProfileImg from '../../../images/avatar.jpg'
+import { db } from "../../../Firebase/firebase";
+import userContext from "../../../Context/userContext";
+
 // import account from '../../_mocks_/account';
 
 // drawer width for mobile devices
@@ -43,6 +58,9 @@ DashboardSidebar.propTypes = {
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
+  // const {user, setUser} = useState([]);
+  const { user } = useContext(userContext);
+
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -50,6 +68,26 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+  const id = localStorage.getItem("userId");
+
+  // useEffect(() => {
+  //   const fetchData = async (id) => {
+  //     try {
+  //       const querySnapshot = await getDocs(collection(db, "users" ,id));
+  //       querySnapshot.forEach((doc) => {
+  //         //list.push({ id: doc.id, ...doc.data() });
+  //         if(doc.id===id){
+  //           setUser({ id: doc.id, ...doc.data() });          }
+  //       });
+  //       // setBookData();
+  //       // console.log();
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchData();
+  // }, {});
+  console.log(user);
 
   const renderContent = (
     <Scrollbar
@@ -75,10 +113,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             <Avatar src={ProfileImg} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-               aseel
+               {user && user}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Student
+                user
               </Typography>
             </Box>
           </AccountStyle>

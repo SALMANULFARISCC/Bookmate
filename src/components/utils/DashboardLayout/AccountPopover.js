@@ -1,10 +1,16 @@
-import { useRef, useState } from "react";
+import { useRef, useState,useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 // material icons 
 // import HomeIcon from '@mui/icons-material/Home';
 // import PersonIcon from '@mui/icons-material/Person';
 // material component
 import { alpha } from "@mui/material/styles";
+import userContext from "./../../../Context/userContext";
+
+
+
 import {
   Button,
   Box,
@@ -34,6 +40,10 @@ import avatar from '../../../images/avatar.jpg'
 export default function AccountPopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(userContext);
+
+
 
   // handle account popover open
   const handleOpen = () => {
@@ -43,6 +53,13 @@ export default function AccountPopover() {
   //handle account popover close
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const logoutHandler = () => {
+    // localStorage.removeItem("token");
+    setUser(null);
+    navigate("/user/login");
+    // window.location.reload();
   };
 
   return (
@@ -110,7 +127,7 @@ export default function AccountPopover() {
         ))} */}
 
         <Box sx={{ p: 2, pt: 1.5 }}>
-          <Button fullWidth color="inherit" variant="outlined">
+          <Button fullWidth color="inherit" variant="outlined" onClick={logoutHandler}>
             Logout
           </Button>
         </Box>
