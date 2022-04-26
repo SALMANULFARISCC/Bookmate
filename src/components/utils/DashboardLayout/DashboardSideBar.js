@@ -60,6 +60,9 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
   // const {user, setUser} = useState([]);
   const { user } = useContext(userContext);
+  const userData =JSON.parse(localStorage.getItem("data"));
+  // setuserprofile(userData[0]);
+  // console.log(userData[0]);
 
 
   useEffect(() => {
@@ -100,23 +103,19 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         },
       }}
     >
-      <Box sx={{ px: 2.5, py: 3 }}>
-        <Box component={RouterLink} to="/" sx={{ display: "inline-flex" }}>
-          {/* <Logo /> */}
-          <Box component={"img"} src={Logo} sx={{ width: 40, height: 40 }} />
-        </Box>
-      </Box>
+
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src={ProfileImg} alt="photoURL" />
+            <Avatar src={userData && userData[0].image} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-               {user && user}
+               {userData && userData[0].name}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                user
+              {userData && userData[0].userType}
+
               </Typography>
             </Box>
           </AccountStyle>

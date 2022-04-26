@@ -28,6 +28,10 @@ import PasswordField from "../../../components/pages/Users/utils/PasswordField";
 import { db, auth,signup,storage} from "./../../../Firebase/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+// import hook
+
+import useConfirm from "../../hook/useConfirm"
+
 import {
   collection,
   setDoc,
@@ -54,6 +58,10 @@ export default function AddUser() {
   const [file, setFile] = useState();
   const [data,setData] = useState();
   const [per, setPerc] = useState(null);
+
+  const {ConfirmSnack,confirmToggler } = useConfirm(
+    "User Added succesfuly"
+  )
 
 
 
@@ -125,7 +133,7 @@ const clearBookCredentials = () => {
 
       });
       clearBookCredentials();
-
+      confirmToggler();
     }catch(err){
       console.error(err.message);
     }
@@ -139,6 +147,7 @@ const clearBookCredentials = () => {
   return (
     <Page title="AddBook">
       <Container>
+        <ConfirmSnack/>
         <Stack
           direction="row"
           alignItems="center"

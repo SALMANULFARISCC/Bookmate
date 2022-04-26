@@ -25,6 +25,8 @@ import ImageUpload from "../../../utils/Inputs/ImageUpload";
 import { db,storage } from "./../../../../Firebase/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import useConfirm from "../../../hook/useConfirm"
+
 
 import {
   collection,
@@ -58,6 +60,10 @@ export default function AddBook() {
   const [per, setPerc] = useState(null);
 
   const bookCollectionRef = collection(db, "books");
+
+  const {ConfirmSnack,confirmToggler } = useConfirm(
+    "Book Added succesfuly"
+  )
 
 
    //To clear the user input
@@ -128,6 +134,7 @@ export default function AddBook() {
       bookedId:"",
       isBooked:false,
     });
+    confirmToggler();
     clearBookCredentials();
   };
 
@@ -137,6 +144,8 @@ export default function AddBook() {
   return (
     <Page title="AddBook">
       <Container>
+      <ConfirmSnack/>
+
         <Stack
           direction="row"
           alignItems="center"

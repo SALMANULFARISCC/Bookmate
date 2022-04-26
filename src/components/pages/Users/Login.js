@@ -100,7 +100,7 @@ export default function Login() {
         if (doc.id === userId) {
           setUserData({ id: doc.id, ...doc.data() });
           const data = [{ id: doc.id, ...doc.data() }];
-          // localStorage.setItem("data",data)
+          localStorage.setItem("data",JSON.stringify(data))
         }
         // console.log(data[]);
 

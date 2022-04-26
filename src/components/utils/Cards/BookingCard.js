@@ -1,4 +1,8 @@
+
+
 import React from "react";
+import { useState, useEffect } from "react";
+
 // material components
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
@@ -9,6 +13,9 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+
+import { db } from "../../../Firebase/firebase";
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -21,8 +28,13 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function BookingCard() {
+export default function BookingCard(book) {
+  console.log(book.data);
   const [expanded, setExpanded] = React.useState(false);
+  
+
+
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -31,9 +43,10 @@ export default function BookingCard() {
   return (
     <Card sx={{ width:"30%", bgcolor: "#F4F6F8",ml:5,minWidth:"24%"}}>
       <CardHeader
-        avatar={<Avatar alt="Remy Sharp" src="https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg" />}
-        title="Janith"
-        subheader="September 14, 2020"
+        avatar={<Avatar alt="Remy Sharp" src={book.data.bookedId[0].image}
+        />}
+        title={book.data.bookedId[0].name}
+        subheader={book.data.bookedId[0].phoneNumber}
       />
       <Grid
         container
@@ -53,7 +66,7 @@ export default function BookingCard() {
               <CardMedia
                 component="img"
                 sx={{ width: "100%" }}
-                image="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1637012564"
+                image={book.data.image}
                 alt="Paella dish"
                 /* Rectangle 8 */
               />
@@ -69,8 +82,8 @@ export default function BookingCard() {
       >
         <CardContent>
           <Typography variant="head3" align="" color="black">
-            The Life of a Man
-          </Typography>
+          {book.data.name}
+                    </Typography>
         </CardContent>
       </Grid>
     </Card>

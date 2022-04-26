@@ -21,16 +21,21 @@ const NavConfig = [
     title: "Book",
     path: "/book",
     icon: BookmarkAddIcon,
+    permittedUser:"admin"
   },
   {
   title: "booking",
   path: "/book/booking",
   icon: BookmarksIcon,
+  permittedUser:"admin"
+
   },
   {
     title: "user",
     path: "/adduser",
     icon: PersonIcon,
+    permittedUser:"admin"
+
   },
   {
     title: "books",

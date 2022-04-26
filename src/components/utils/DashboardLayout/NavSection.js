@@ -175,7 +175,10 @@ NavSection.propTypes = {
 export default function NavSection({ navConfig, ...other }) {
   // pathname in useLocation component
   const { pathname } = useLocation();
-
+  const userData =JSON.parse(localStorage.getItem("data"));
+  // setuserprofile(userData[0]);
+  const userType = userData && userData[0].userType
+  console.log(userType);
   //To match current url and nav url
   const match = (path) =>
     path ? !!matchPath({ path, end: false }, pathname) : false;
@@ -184,9 +187,9 @@ export default function NavSection({ navConfig, ...other }) {
     <Box {...other}>
       <List disablePadding>
         {/* nav item component to map through navlink */}
-        {navConfig.map((item) => (
+        {navConfig.map((item) => !item?.permittedUser || item.permittedUser === userType?(
           <NavItem key={item.title} item={item} active={match} />
-        ))}
+        ):null)}
       </List>
     </Box>
   );
