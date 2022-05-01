@@ -6,12 +6,24 @@ import {
   Container,
   Typography,
 } from '@mui/material';
+import { useState, useEffect } from "react";
+
 
 // material icons
 import AddIcon from '@mui/icons-material/Add';
 // page wrapper for dynamic meta tags
 import Page from '../../../utils/Page';
 import DataTable from '../../../utils/DataTable';
+import { db } from "../../../../Firebase/firebase";
+import {
+  collection,
+  setDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 // table header cell config
 const TABLE_HEAD = [
@@ -69,8 +81,8 @@ const TABLE_DATA =[
 ]
 
 
-
 export default function BookingList() {
+  
 
   return (
     <Page title="BookList">

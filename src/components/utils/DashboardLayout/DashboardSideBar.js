@@ -1,5 +1,17 @@
+
+import {
+  collection,
+  setDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+
+} from "firebase/firestore";
+
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useEffect,useState,useContext } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 // material ui predefined components
 import { styled } from "@mui/material/styles";
@@ -12,6 +24,9 @@ import { MHidden } from "../../@material-extent";
 import NavConfig from "./NavConfig";
 import Logo from "../../../images/AvengersLogo.png";
 import ProfileImg from '../../../images/avatar.jpg'
+import { db } from "../../../Firebase/firebase";
+import userContext from "../../../Context/userContext";
+
 // import account from '../../_mocks_/account';
 
 // drawer width for mobile devices
@@ -43,6 +58,12 @@ DashboardSidebar.propTypes = {
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
+  // const {user, setUser} = useState([]);
+  const { user } = useContext(userContext);
+  const userData =JSON.parse(localStorage.getItem("data"));
+  // setuserprofile(userData[0]);
+  // console.log(userData[0]);
+
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -50,6 +71,26 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+  const id = localStorage.getItem("userId");
+
+  // useEffect(() => {
+  //   const fetchData = async (id) => {
+  //     try {
+  //       const querySnapshot = await getDocs(collection(db, "users" ,id));
+  //       querySnapshot.forEach((doc) => {
+  //         //list.push({ id: doc.id, ...doc.data() });
+  //         if(doc.id===id){
+  //           setUser({ id: doc.id, ...doc.data() });          }
+  //       });
+  //       // setBookData();
+  //       // console.log();
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchData();
+  // }, {});
+  console.log(user);
 
   const renderContent = (
     <Scrollbar
@@ -62,23 +103,19 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         },
       }}
     >
-      <Box sx={{ px: 2.5, py: 3 }}>
-        <Box component={RouterLink} to="/" sx={{ display: "inline-flex" }}>
-          {/* <Logo /> */}
-          <Box component={"img"} src={Logo} sx={{ width: 40, height: 40 }} />
-        </Box>
-      </Box>
+
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src={ProfileImg} alt="photoURL" />
+            <Avatar src={userData && userData[0].image} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-               aseel
+               {userData && userData[0].name}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Student
+              {userData && userData[0].userType}
+
               </Typography>
             </Box>
           </AccountStyle>

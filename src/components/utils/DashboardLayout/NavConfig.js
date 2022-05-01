@@ -3,6 +3,8 @@ import FaceIcon from "@mui/icons-material/Face";
 import PersonIcon from '@mui/icons-material/Person';
 import BookIcon from '@mui/icons-material/Book';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+
 //nav bar options
 const NavConfig = [
   // {
@@ -18,13 +20,29 @@ const NavConfig = [
   {
     title: "Book",
     path: "/book",
-    icon: BookIcon,
+    icon: BookmarkAddIcon,
+    permittedUser:"admin"
   },
   {
   title: "booking",
-  path: "/book/view",
+  path: "/book/booking",
   icon: BookmarksIcon,
+  permittedUser:"admin"
+
+  },
+  {
+    title: "user",
+    path: "/adduser",
+    icon: PersonIcon,
+    permittedUser:"admin"
+
+  },
+  {
+    title: "books",
+    path: "/books",
+    icon:  BookIcon,
   }
+  
 ];
 
 export default NavConfig;

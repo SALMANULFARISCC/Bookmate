@@ -10,7 +10,7 @@ import { Card, Typography } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
-const TOTAL = 1352831;
+const TOTAL = ["43",'23',"77","43"];
 
 export default function UsersCard({type}) {
   const {title,Icon,colorType} = type;
